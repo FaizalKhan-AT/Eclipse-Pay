@@ -1,4 +1,4 @@
-const { CustomAPIError } = require("../error/customError");
+const { CustomAPIError } = require("../Error/CustomError");
 
 class HandleError {
   static customErrorHandler = (err, req, res, next) => {

@@ -1,9 +1,18 @@
-const asyncWrapper = require("../middlewares/AsyncWrapper");
+const UserModel = require("../models/user.model");
 
 class AuthController {
-  registerUser = asyncWrapper((req, res, next) => {
-    res.send("hello world");
-  });
+  constructor() {
+    this.userRepo = new UserModel();
+  }
+  async registerUser(data = { Email, Password }) {
+    if (data) {
+    }
+    return {
+      error: true,
+      message: "No email and password",
+      statusCode: 400,
+    };
+  }
 }
 
 module.exports = AuthController;
