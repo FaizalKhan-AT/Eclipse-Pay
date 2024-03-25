@@ -1,17 +1,18 @@
-const mysql = require("mysql2");
+const { PrismaClient } = require("@prisma/client");
 
-class Connection {
-  constructor(config) {
-    this._con = this.createDBConnection(config);
+class PrismaConnection {
+  prisma;
+  prismaInit() {
+    if (!this.prisma) {
+      this.prisma = new PrismaClient();
+      return this.prisma;
+    }
   }
-
-  createDBConnection = (config) => {
-    if (!config) throw "Database Connection failed";
-    return mysql.createPool(config);
-  };
-
-  getConnection = () => {
-    return this._con.promise();
-  };
+  disconnectPrisma() {
+    if (this.prisma) {
+      this.prisma.$disconnect();
+    }
+  }
 }
-module.exports = Connection;
+
+module.exports = PrismaConnection;

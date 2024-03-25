@@ -1,5 +1,5 @@
-const { connectDB, DBConnection } = require("./connectDB");
+const PrismaConnection = require("./connection");
+
 module.exports = {
-  connectDB,
-  DBConnection,
+  prisma: new PrismaConnection(),
 };
