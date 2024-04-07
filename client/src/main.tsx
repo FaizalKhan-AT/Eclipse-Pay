@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import App from "./App.tsx";
+import { Toaster } from "@/components/ui/toaster.tsx";
+import AuthContext from "@/context/AuthContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthContext>
+        <Toaster />
+        <App />
+      </AuthContext>
     </BrowserRouter>
   </React.StrictMode>
 );
