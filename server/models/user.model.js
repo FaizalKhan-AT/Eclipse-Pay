@@ -1,8 +1,8 @@
-const { prisma: db } = require("../database");
+const { PrismaClient } = require("@prisma/client");
 
 class UserModel {
   constructor() {
-    this.prisma = db.prismaInit();
+    this.prisma = new PrismaClient();
   }
   createUser = async (email, password) => {
     try {
