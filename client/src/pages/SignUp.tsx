@@ -1,8 +1,8 @@
 import axios from "@/axios.config";
 import { AuthForm } from "@/components/forms";
 import { useToast } from "@/components/ui";
-import { getToastData } from "@/lib/helpers";
-import { IFormData } from "@/lib/interfaces";
+import { getToastData } from "@/lib/helpers/toast.helper";
+import { IFormData } from "@/lib/interfaces/Form.interface";
 import { API_ENDPOINTS } from "@/lib/Json";
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";

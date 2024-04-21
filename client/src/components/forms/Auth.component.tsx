@@ -1,4 +1,4 @@
-import { IFormData } from "@/lib/interfaces";
+import { IFormData } from "@/lib/interfaces/Form.interface";
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -13,7 +13,7 @@ import {
   AlertDescription,
   Spinner,
 } from "@/components/ui";
-import { validateEmail, validatePassword } from "@/lib/helpers";
+import { validateEmail, validatePassword } from "@/lib/helpers/validate.helper";
 import { AlertDestructive } from "@/components/ui";
 
 interface Props {
@@ -86,14 +86,14 @@ export const AuthForm: FC<Props> = ({
           <div className="grid gap-2">
             <div className="flex items-center">
               <Label htmlFor="password">Password</Label>
-              {login ? (
+              {/* {login ? (
                 <Link
                   to="/forgot-password"
                   className="ml-auto inline-block text-sm underline"
                 >
                   Forgot your password?
                 </Link>
-              ) : null}
+              ) : null} */}
             </div>
             <Input
               name="password"

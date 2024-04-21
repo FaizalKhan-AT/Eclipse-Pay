@@ -1,7 +1,7 @@
 import { FC, useContext, useState } from "react";
-import { IFormData } from "@/lib/interfaces";
+import { IFormData } from "@/lib/interfaces/Form.interface";
 import { useToast } from "@/components/ui";
-import { getToastData } from "@/lib/helpers";
+import { getToastData } from "@/lib/helpers/toast.helper";
 import axios from "@/axios.config";
 import { API_ENDPOINTS } from "@/lib/Json";
 import { saveToSession } from "@/lib/utils";
@@ -26,7 +26,7 @@ const Login: FC = () => {
           saveToSession(res.data.data);
           getUser(res.data.data.token);
           setLoading(false);
-          navigate("/dashboard");
+          navigate("/");
           break;
       }
     } catch (err: any) {

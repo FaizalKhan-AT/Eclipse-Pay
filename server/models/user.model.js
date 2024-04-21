@@ -12,7 +12,7 @@ class UserModel {
           password,
         },
       });
-      if (user) return "User registeration was successfull";
+      if (user) return "User registration was successfull";
     } catch (err) {
       if (err.code === "P2002")
         return {

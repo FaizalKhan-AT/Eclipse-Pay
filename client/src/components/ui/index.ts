@@ -12,3 +12,5 @@ export * from "./navbar";
 export * from "./dropdown-menu";
 export * from "./dash-header";
 export * from "./context-menu";
+export * from "./breadcrumb.header";
+export * from "./textarea";

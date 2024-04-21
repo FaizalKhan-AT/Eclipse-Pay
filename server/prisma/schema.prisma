@@ -9,7 +9,35 @@ datasource db {
 
 // models
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  password    String
+  App         App[]
+  transaction transaction[]
+}
+
+model App {
+  id             Int     @default(autoincrement())
+  password       String
+  appId          String
+  appName        String  @unique
+  allowedOrigins String
+  apiKey         String  @unique
+  appSecret      String
+  description    String?
+  isProd         Boolean @default(false)
+  user           User    @relation(fields: [userId], references: [id])
+  userId         Int
+
+  @@id([id, appId])
+}
+
+model transaction {
+  id           Int      @id @default(autoincrement())
+  transDate    DateTime
+  transAmount  Float
+  isSuccessful Boolean
+  log          String   @default("")
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
 }
