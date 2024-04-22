@@ -30,15 +30,13 @@ const Navbar: FC = () => {
         </div>
       </div>
       <div className="flex items-center gap-x-2">
-        {authState.isLoggedIn ? (
-          <Button variant="link" asChild>
+        <Button variant="link" asChild>
+          {authState.isLoggedIn ? (
             <Link to="/dashboard">Go to Dashboard</Link>
-          </Button>
-        ) : (
-          <Button variant="link" asChild>
+          ) : (
             <Link to="/login">Login</Link>
-          </Button>
-        )}
+          )}
+        </Button>
         <Button asChild>
           <Link to="/get-started">Get Started</Link>
         </Button>
