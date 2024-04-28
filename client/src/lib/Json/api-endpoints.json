@@ -2,5 +2,6 @@
   "REGISTER": "auth/register",
   "LOGIN": "auth/login",
   "AUTH": "auth",
-  "APP": "app"
+  "APP": "app",
+  "TRANSACTION": "transaction"
 }

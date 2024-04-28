@@ -1,8 +1,12 @@
+import { FC, useEffect } from "react";
 import { BreadcrumbHeader, Header, Sidebar } from "@/components/ui";
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard: FC = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("apps");
+  }, [location.pathname === "/dashboard"]);
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[220px_1fr]">
       <Sidebar />

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `transaction` MODIFY `transDate` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3);

@@ -12,3 +12,14 @@ export interface IApp {
   isProd: boolean;
   accountNumber: number;
 }
+
+export interface ITransaction {
+  id: number;
+  transDate: string;
+  transAmount: number;
+  isSuccessful: boolean;
+  log: string;
+  userId: number;
+  accountNumber: number;
+  appName: string;
+}

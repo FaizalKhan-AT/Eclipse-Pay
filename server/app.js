@@ -3,7 +3,7 @@ const compression = require("compression");
 const app = express();
 const cors = require("cors");
 const HandleError = require("./middlewares/ErrorHandler");
-const { AuthRoutes, AppsRoutes } = require("./routes");
+const { AuthRoutes, AppsRoutes, TransRoutes } = require("./routes");
 require("dotenv").config();
 //middlewares
 app.use(compression());
@@ -12,6 +12,7 @@ app.use(cors());
 // Routes
 app.use("/api/v1/auth", AuthRoutes);
 app.use("/api/v1/app", AppsRoutes);
+app.use("/api/v1/transaction", TransRoutes);
 // Custom Errors
 app.use(HandleError.customErrorHandler);
 // server

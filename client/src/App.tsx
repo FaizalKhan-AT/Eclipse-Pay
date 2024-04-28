@@ -9,6 +9,7 @@ import { Apps, NewApp } from "./components/apps";
 import NotFound from "./pages/NotFound";
 import SettingsUpdate from "./components/forms/SettingsUpdate.component";
 import Settings from "./components/Settings/Settings.component";
+import Transaction from "./components/transactions";
 
 const App: FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: FC = () => {
       >
         <Route path="apps" element={<Apps />} />
         <Route path="apps/new" element={<NewApp />} />
+        <Route path="ledger" element={<Transaction />} />
         <Route path="settings" element={<Settings />} />
         <Route path="settings/:appname" element={<SettingsUpdate />} />
       </Route>

@@ -9,39 +9,39 @@ datasource db {
 
 // models
 model User {
-  id          Int           @id @default(autoincrement())
-  email       String        @unique
-  password    String
-  App         App[]
-  transaction transaction[]
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  App      App[]
 }
 
 model App {
-  id             Int         @default(autoincrement())
+  id             Int           @default(autoincrement())
   password       String
-  appName        String      @unique
+  appName        String        @unique
   allowedOrigins String
   appSecret      String
   description    String?
-  isProd         Boolean     @default(false)
-  user           User        @relation(fields: [userId], references: [id])
+  isProd         Boolean       @default(false)
+  user           User          @relation(fields: [userId], references: [id])
   userId         Int
-  accountNumber  Int         @default(985628745)
-  account        BankAccount @relation(fields: [accountNumber], references: [accountNumber])
+  accountNumber  Int           @default(985628745)
+  account        BankAccount   @relation(fields: [accountNumber], references: [accountNumber])
+  transaction    transaction[]
 
   @@id([id])
 }
 
 model transaction {
   id            Int         @id @default(autoincrement())
-  transDate     DateTime
+  transDate     DateTime    @default(now())
   transAmount   Float
   isSuccessful  Boolean
   log           String      @default("")
-  user          User        @relation(fields: [userId], references: [id])
-  userId        Int
   accountNumber Int
   account       BankAccount @relation(fields: [accountNumber], references: [accountNumber])
+  appName       String
+  app           App         @relation(fields: [appName], references: [appName])
 }
 
 model BankAccount {

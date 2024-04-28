@@ -22,10 +22,17 @@ const Navbar: FC = () => {
         </div>
         <div className="flex items-center">
           <Button variant="link" asChild>
-            <Link to="/">API Reference</Link>
+            <Link
+              to="http://localhost:3001/DeveloperTools/API-reference"
+              target="_blank"
+            >
+              API Reference
+            </Link>
           </Button>
           <Button variant="link" asChild>
-            <Link to="/">Docs</Link>
+            <Link to="http://localhost:3001/" target="_blank">
+              Docs
+            </Link>
           </Button>
         </div>
       </div>

@@ -43,6 +43,18 @@ class AppsModel {
     if (app) return app;
   };
 
+  getAppSecret = async (appName) => {
+    let app = await this.prisma.app.findUnique({
+      where: {
+        appName,
+      },
+      select: {
+        appSecret: true,
+      },
+    });
+    if (app) return app;
+  };
+
   updateApp = async (appName, data) => {
     let app = await this.prisma.app.update({
       where: {
@@ -71,7 +83,17 @@ class AppsModel {
     });
     if (apps) return apps;
   };
-
+  getAppNames = async (userId) => {
+    let names = await this.prisma.app.findMany({
+      where: {
+        userId,
+      },
+      select: {
+        appName: true,
+      },
+    });
+    if (names) return names;
+  };
   getPassword = async (appName) => {
     let app = await this.prisma.app.findUnique({
       where: {

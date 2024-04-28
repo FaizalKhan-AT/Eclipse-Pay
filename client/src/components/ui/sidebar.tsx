@@ -11,11 +11,11 @@ import {
 } from "lucide-react";
 
 const Links = [
-  {
-    path: "/dashboard",
-    icon: Home,
-    name: "Dashboard",
-  },
+  // {
+  //   path: "/dashboard",
+  //   icon: Home,
+  //   name: "Dashboard",
+  // },
   {
     path: "/dashboard/apps",
     icon: LayoutDashboard,

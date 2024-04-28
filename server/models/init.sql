@@ -48,3 +48,5 @@ VALUES
 
 
 
+ALTER TABLE BankAccount
+ADD CONSTRAINT CHK_Balance_Positive CHECK (balance >= 0);

@@ -32,7 +32,9 @@ const Home: FC = () => {
             complexities.
           </p>
           <Button className="w-1/6 tex-lg" asChild>
-            <Link to="/get-started">Get Started</Link>
+            <Link to="http://localhost:3001/" target="_blank">
+              Get Started
+            </Link>
           </Button>
           <Footer />
         </div>
