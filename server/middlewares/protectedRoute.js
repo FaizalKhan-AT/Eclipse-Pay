@@ -13,7 +13,7 @@ class ProtectedRoute {
       try {
         token = req.headers.authorization.split(" ")[1];
         let decode = verify(token, process.env.JWT_SECRET);
-        req.user = await this.repo.findUser(decode.email);
+        req.user = await this.repo.findUserSelect(decode.email);
         next();
       } catch (err) {
         return res

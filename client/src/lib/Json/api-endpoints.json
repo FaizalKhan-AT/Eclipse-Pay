@@ -1,5 +1,6 @@
 {
   "REGISTER": "auth/register",
   "LOGIN": "auth/login",
-  "AUTH": "auth"
+  "AUTH": "auth",
+  "APP": "app"
 }

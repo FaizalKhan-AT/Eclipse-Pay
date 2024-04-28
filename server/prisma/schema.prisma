@@ -17,27 +17,52 @@ model User {
 }
 
 model App {
-  id             Int     @default(autoincrement())
+  id             Int         @default(autoincrement())
   password       String
-  appId          String
-  appName        String  @unique
+  appName        String      @unique
   allowedOrigins String
-  apiKey         String  @unique
   appSecret      String
   description    String?
-  isProd         Boolean @default(false)
-  user           User    @relation(fields: [userId], references: [id])
+  isProd         Boolean     @default(false)
+  user           User        @relation(fields: [userId], references: [id])
   userId         Int
+  accountNumber  Int         @default(985628745)
+  account        BankAccount @relation(fields: [accountNumber], references: [accountNumber])
 
-  @@id([id, appId])
+  @@id([id])
 }
 
 model transaction {
-  id           Int      @id @default(autoincrement())
-  transDate    DateTime
-  transAmount  Float
-  isSuccessful Boolean
-  log          String   @default("")
-  user         User     @relation(fields: [userId], references: [id])
-  userId       Int
+  id            Int         @id @default(autoincrement())
+  transDate     DateTime
+  transAmount   Float
+  isSuccessful  Boolean
+  log           String      @default("")
+  user          User        @relation(fields: [userId], references: [id])
+  userId        Int
+  accountNumber Int
+  account       BankAccount @relation(fields: [accountNumber], references: [accountNumber])
+}
+
+model BankAccount {
+  id                Int           @id @default(autoincrement())
+  accountNumber     Int           @unique
+  accountHolderName String
+  balance           Float
+  createdAt         DateTime      @default(now())
+  isProd            Boolean       @default(false)
+  App               App[]
+  transaction       transaction[]
+  CardDetails       CardDetails[]
+}
+
+model CardDetails {
+  id             Int         @id @default(autoincrement())
+  cardNumber     String      @unique
+  cardHolderName String
+  expirationDate String
+  cvv            String
+  createdAt      DateTime    @default(now())
+  accountNumber  Int
+  account        BankAccount @relation(fields: [accountNumber], references: [accountNumber])
 }

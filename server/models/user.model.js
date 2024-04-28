@@ -32,6 +32,19 @@ class UserModel {
     if (user) return user;
   };
 
+  findUserSelect = async (email) => {
+    let user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+      select: {
+        email: true,
+        id: true,
+      },
+    });
+    if (user) return user;
+  };
+
   updateUser = async (email, password) => {
     let user = await this.prisma.user.update({
       where: {

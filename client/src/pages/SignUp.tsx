@@ -31,6 +31,7 @@ const SignUp: FC = () => {
     let toastData: any = getToastData(data);
     toast(toastData);
   }
+
   return (
     <div className="flex items-center h-[100vh]">
       <AuthForm

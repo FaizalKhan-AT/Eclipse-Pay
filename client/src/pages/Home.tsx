@@ -9,13 +9,13 @@ const Home: FC = () => {
   return (
     <>
       <div className="min-h-screen w-full flex flex-col items-center hero-section relative">
-        <div className="overlay absolute bottom-0 left-0 top-0 right-0">
+        <div className="overlay absolute z-0 bottom-0 left-0 top-0 right-0">
           <Matrix />
         </div>
         <div className="z-20 w-full flex justify-center">
           <Navbar />
         </div>
-        <div className="h-full flex flex-col gap-5 justify-center text-center absolute z-10">
+        <div className="h-full flex flex-col gap-5 justify-center items-center text-center absolute z-10">
           <h1 className="text-5xl font-bold txt-shadow">
             <span>
               We simplyfy{" "}
@@ -31,13 +31,9 @@ const Home: FC = () => {
             Experience buttery smooth payment intergations. without any
             complexities.
           </p>
-          <div className="flex items-center justify-center mt-5">
-            <Button className="w-1/6 tex-lg" asChild>
-              <Link to="/get-started">Get Started</Link>
-            </Button>
-          </div>
-        </div>
-        <div className="flex items-end h-[90vh] z-10">
+          <Button className="w-1/6 tex-lg" asChild>
+            <Link to="/get-started">Get Started</Link>
+          </Button>
           <Footer />
         </div>
       </div>

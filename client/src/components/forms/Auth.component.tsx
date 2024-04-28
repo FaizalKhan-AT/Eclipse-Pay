@@ -3,18 +3,18 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
-  Button,
   Label,
   Input,
   CardHeader,
   CardTitle,
   CardContent,
-  Checkbox,
   AlertDescription,
-  Spinner,
+  LoadingButton,
 } from "@/components/ui";
 import { validateEmail, validatePassword } from "@/lib/helpers/validate.helper";
 import { AlertDestructive } from "@/components/ui";
+import { CONSTANTS } from "@/lib/enums/constants.enum";
+import { Eye, EyeOff, LucideIcon } from "lucide-react";
 
 interface Props {
   title: string;
@@ -35,6 +35,7 @@ export const AuthForm: FC<Props> = ({
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [Icon, setIcon] = useState<LucideIcon>(Eye);
 
   function onChange(e: ChangeEvent<HTMLInputElement>) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -58,13 +59,15 @@ export const AuthForm: FC<Props> = ({
       return "Enter a valid email";
     }
     if (!validatePassword(formData.password)) {
-      return `Password should contain atleast 8 characters 
-          \nIt should contain upper and lowercase characters\n
-          It should contain numbers and alphanumerics`;
+      return CONSTANTS.PASSWORD;
     }
     return true;
   }
-
+  function showHide() {
+    setShowPassword(!showPassword);
+    const icon = !showPassword;
+    icon ? setIcon(EyeOff) : setIcon(Eye);
+  }
   return (
     <Card className="mx-auto max-w-sm w-[353px]">
       <CardHeader>
@@ -95,28 +98,28 @@ export const AuthForm: FC<Props> = ({
                 </Link>
               ) : null} */}
             </div>
-            <Input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              onChange={onChange}
-              value={formData.password}
-              required
-            />
-            <label className="flex items-center gap-2 text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              <Checkbox
-                onCheckedChange={() => setShowPassword(!showPassword)}
+            <div className="relative">
+              <Input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                onChange={onChange}
+                value={formData.password}
+                required
               />
-              Show password
-            </label>
+              <Icon
+                onClick={showHide}
+                className="size-5 absolute right-[10px] bottom-[7px]"
+              />
+            </div>
           </div>
           {error ? (
             <AlertDestructive title="Validation Errors">
               <AlertDescription>{error}</AlertDescription>
             </AlertDestructive>
           ) : null}
-          <Button type="submit" className="w-full">
-            {loading ? <Spinner /> : title}
-          </Button>
+          <LoadingButton isLoading={loading} type="submit" className="w-full">
+            {title}
+          </LoadingButton>
         </form>
         {login ? (
           <div className="mt-4 text-center text-sm">

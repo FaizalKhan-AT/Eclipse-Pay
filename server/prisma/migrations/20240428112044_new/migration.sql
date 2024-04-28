@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `app` MODIFY `accountNumber` INTEGER NOT NULL DEFAULT 985628745;

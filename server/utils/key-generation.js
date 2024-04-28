@@ -16,4 +16,6 @@ async function generateAppSecret(key) {
   return hashed;
 }
 
+function createAppId() {}
+
 module.exports = { generateApiKey, generateAppSecret };
